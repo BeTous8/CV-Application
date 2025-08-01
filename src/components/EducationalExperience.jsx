@@ -33,12 +33,14 @@ export default function EducationalExperience ({schoolName, studyTitle, date}) {
                     value={formData.schoolName}
                     onChange={handleInputChange}
                 />
+                <label>Study Title:</label>
                 <input
                     type='text'
                     name="studyTitle"
                     value={formData.studyTitle}
                     onChange={handleInputChange}
                 />
+                <label>Date:</label>
                 <input
                     type='date'
                     name="date"

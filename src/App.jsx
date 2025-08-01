@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import GeneralInfo from './components/GeneralInfo.jsx';
 import EducationalExperience from './components/EducationalExperience.jsx'
+import PracticalExperience from './components/PracticalExperience.jsx';
 import './App.css'
 
 function App() {
@@ -18,6 +19,13 @@ function App() {
         schoolName="UCSD"
         studyTitle="Computer Engineering"
         date=""
+      />
+      <PracticalExperience
+        companyName = 'Sony'
+        positionTitle= 'fronEnd developer'
+        mainResponsibilities= ''
+        fromDate= ''
+        toDate= ''
       />
     </>
   )
