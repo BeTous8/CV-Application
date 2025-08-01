@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import GeneralInfo from './components/GeneralInfo.jsx';
+import EducationalExperience from './components/EducationalExperience.jsx'
 import './App.css'
 
 function App() {
@@ -11,6 +12,12 @@ function App() {
         name="John Doe"
         email="John_Doe@gmail.com"
         phoneNumber="123-456-7890"
+      />
+      <br/>
+      <EducationalExperience
+        schoolName="UCSD"
+        studyTitle="Computer Engineering"
+        date=""
       />
     </>
   )

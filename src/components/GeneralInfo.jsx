@@ -17,7 +17,7 @@ export default function GeneralInfo({name, email, phoneNumber}) {
     };
   return (
     <div className="general-info">
-      <h1>General Information</h1>
+      <h3>General Information</h3>
         {isEditing ? (
         <form>
             <label>Name:</label>
