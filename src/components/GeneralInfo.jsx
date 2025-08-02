@@ -1,19 +1,17 @@
 import React, { useState } from 'react';
 
 
-export default function GeneralInfo({name, email, phoneNumber}) {
-    const [isEditing, setIsEditing] = useState(false);
-    const [formData, setFormData] = useState({
-        name: name,
-        email: email,
-        phoneNumber: phoneNumber
-    });
+export default function GeneralInfo({data, isEditing, onDataChange}) {
+    
+    
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value
-        });
+        const newData = {
+            ...data,
+            [name] : value
+        }
+        onDataChange(newData)
+        ;
     };
   return (
     <div className="general-info">
@@ -24,43 +22,35 @@ export default function GeneralInfo({name, email, phoneNumber}) {
             <input 
                 type="text" 
                 name="name"
-                value={formData.name} 
+                value={data.name} 
                 onChange={handleInputChange} 
             />
             <label>Email Address:</label>
             <input 
                 type="email" 
                 name="email"
-                value={formData.email}
+                value={data.email}
                 onChange={handleInputChange}
             />
             <label>Phone Number:</label>
             <input 
                 type="tel" 
                 name="phoneNumber"
-                value={formData.phoneNumber}
+                value={data.phoneNumber}
                 onChange={handleInputChange}
             />
         </form>
         ) : (
             <div>
-                <p>Name: {formData.name}</p>
-                <p>Email Address: {formData.email}</p>
-                <p>Phone Number: {formData.phoneNumber}</p>
+                <p>Name: {data.name}</p>
+                <p>Email Address: {data.email}</p>
+                <p>Phone Number: {data.phoneNumber}</p>
             </div>
             )}
       <hr />
-      <button onClick={() => setIsEditing(!isEditing)}>
-        {isEditing ? 'Save' : 'Edit'}
-      </button>
-        <button onClick={() => setFormData({ name: '', email: '', phoneNumber: '' })}>
-            Clear   
-        </button>
-        {isEditing && (
-            <button onClick={() => setIsEditing(false)}>
-            Back
-        </button>
-        )}
+      <button onClick={() => onDataChange({ name: '', email: '', phoneNumber: '' })}>
+                Reset   
+            </button>
         
         
 

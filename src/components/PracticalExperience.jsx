@@ -1,21 +1,15 @@
 import React, {useState} from "react";
 
-export default function PracticalExperience({companyName, positionTitle, mainResponsibilities, fromDate, toDate}) {
-    const [isEditing, setIsEditing] = useState(false)
-    const [formData, setFormData] = useState({
-        companyName : companyName,
-        positionTitle : positionTitle,
-        mainResponsibilities : mainResponsibilities,
-        fromDate : fromDate,
-        toDate : toDate
-    })
+export default function PracticalExperience({data, isEditing, onDataChange}) {
+    
 
     const handleInputChange = (e) => {
         const {name, value} = e.target
-        setFormData({
-            ...formData,
+        const newData = {
+            ...data,
             [name] : value
-        })
+        }
+        onDataChange(newData)
     }
 
     return (
@@ -28,21 +22,21 @@ export default function PracticalExperience({companyName, positionTitle, mainRes
                     <input 
                     type="text"
                     name='companyName'
-                    value={formData.companyName}
+                    value={data.companyName}
                     onChange={handleInputChange}
                     />
                     <label>Position Title:</label>
                     <input 
                     type="text"
                     name='positionTitle'
-                    value={formData.positionTitle}
+                    value={data.positionTitle}
                     onChange={handleInputChange}
                     />
                     {/* <br/> */}
                     <label>Main Responsibilities:</label>
                     <textarea 
                     name='mainResponsibilities'
-                    value={formData.mainResponsibilities}
+                    value={data.mainResponsibilities}
                     rows='4'
                     placeholder="• Managed team of 5 developers
                             - Led project planning and implementation
@@ -53,14 +47,14 @@ export default function PracticalExperience({companyName, positionTitle, mainRes
                 <input
                     type='date'
                     name="fromDate"
-                    value={formData.fromDate}
+                    value={data.fromDate}
                     onChange={handleInputChange}
                 />
                 <label>To Date:</label>
                 <input
                     type='date'
                     name="toDate"
-                    value={formData.toDate}
+                    value={data.toDate}
                     onChange={handleInputChange}
                 />
                 </form>
@@ -69,18 +63,16 @@ export default function PracticalExperience({companyName, positionTitle, mainRes
 
             : 
             <div>
-                <p>company Name: {formData.companyName}</p>
-                <p>position title: {formData.positionTitle}</p>
-                <p>main responsibilities: {formData.mainResponsibilities}</p>
-                <p>From Date: {formData.fromDate}</p>
-                <p>To Date: {formData.toDate}</p>
+                <p>company Name: {data.companyName}</p>
+                <p>position title: {data.positionTitle}</p>
+                <p>main responsibilities: {data.mainResponsibilities}</p>
+                <p>From Date: {data.fromDate}</p>
+                <p>To Date: {data.toDate}</p>
             </div>
              }
 
-             <button onClick={() => setIsEditing(!isEditing)}>
-                {isEditing ? "Save" : "Edit"}
-             </button>
-             <button onClick={() => setFormData({companyName: "", positionTitle: "", mainResponsibilities: "", fromDate: "", toDate: ""})}>Clear</button>
+             
+             <button onClick={() => onDataChange({companyName: "", positionTitle: "", mainResponsibilities: "", fromDate: "", toDate: ""})}>Reset</button>
         </div>
         
     )

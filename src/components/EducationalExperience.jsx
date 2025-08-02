@@ -1,24 +1,16 @@
 import React, {useState} from "react";
 
-export default function EducationalExperience ({schoolName, studyTitle, date}) {
-    const [isEditing, setIsEditing] = useState(false);
-    const [formData, setFormData] = useState(
-        {
-            schoolName : schoolName,
-            studyTitle : studyTitle,
-            date : date
-
-
-        }
-    )
-
+export default function EducationalExperience ({data, isEditing, onDataChange}) {
+    
     const handleInputChange = (e) => {
-        const {name, value} = e.target
-        setFormData({
-            ...formData,
+        const { name, value } = e.target;
+        const newData = {
+            ...data,
             [name] : value
-        })
-    }
+        }
+        onDataChange(newData)
+        
+    };
 
 
     return (
@@ -30,36 +22,34 @@ export default function EducationalExperience ({schoolName, studyTitle, date}) {
                 <input
                     type='text'
                     name="schoolName"
-                    value={formData.schoolName}
+                    value={data.schoolName}
                     onChange={handleInputChange}
                 />
                 <label>Study Title:</label>
                 <input
                     type='text'
                     name="studyTitle"
-                    value={formData.studyTitle}
+                    value={data.studyTitle}
                     onChange={handleInputChange}
                 />
                 <label>Date:</label>
                 <input
                     type='date'
                     name="date"
-                    value={formData.date}
+                    value={data.date}
                     onChange={handleInputChange}
                 />
             </form>
             : 
             <div>
-                <p>school name: {formData.schoolName}</p>
-                <p>title of study: {formData.studyTitle}</p>
-                <p>date of study: {formData.date}</p>
+                <p>school name: {data.schoolName}</p>
+                <p>title of study: {data.studyTitle}</p>
+                <p>date of study: {data.date}</p>
             </div>
             }
-            <button onClick={() => setIsEditing(!isEditing)}>
-                {isEditing ? "Save" : "Edit"}
-            </button>
-            <button onClick={() => setFormData({ name: '', email: '', phoneNumber: '' })}>
-                Clear
+            
+            <button onClick={() => onDataChange({ name: '', email: '', phoneNumber: '' })}>
+                Reset
             </button>
         </div>
     )
