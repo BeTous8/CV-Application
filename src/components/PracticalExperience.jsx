@@ -13,7 +13,7 @@ export default function PracticalExperience({data, isEditing, onDataChange}) {
     }
 
     return (
-        <div>
+        <>
             <h3>Practical Experience</h3>
             
             {isEditing ? 
@@ -38,9 +38,9 @@ export default function PracticalExperience({data, isEditing, onDataChange}) {
                     name='mainResponsibilities'
                     value={data.mainResponsibilities}
                     rows='4'
-                    placeholder="• Managed team of 5 developers
-                            - Led project planning and implementation
-                            - Improved system performance by 30%"
+                    placeholder={`• Managed team of 5 developers
+- Led project planning and implementation  
+- Improved system performance by 30%`}
                     onChange={handleInputChange}
                     />
                     <label>From Date:</label>
@@ -63,17 +63,17 @@ export default function PracticalExperience({data, isEditing, onDataChange}) {
 
             : 
             <div>
-                <p>company Name: {data.companyName}</p>
-                <p>position title: {data.positionTitle}</p>
-                <p>main responsibilities: {data.mainResponsibilities}</p>
-                <p>From Date: {data.fromDate}</p>
-                <p>To Date: {data.toDate}</p>
+                <p><strong>company Name:</strong> {data.companyName}</p>
+                <p><strong>position title:</strong> {data.positionTitle}</p>
+                <p><strong>main responsibilities:</strong> {data.mainResponsibilities}</p>
+                <p><strong>From Date:</strong> {data.fromDate}</p>
+                <p><strong>To Date:</strong> {data.toDate}</p>
             </div>
              }
 
-             
+            
              <button onClick={() => onDataChange({companyName: "", positionTitle: "", mainResponsibilities: "", fromDate: "", toDate: ""})}>Reset</button>
-        </div>
+        </>
         
     )
 

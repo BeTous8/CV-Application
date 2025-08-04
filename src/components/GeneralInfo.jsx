@@ -14,7 +14,7 @@ export default function GeneralInfo({data, isEditing, onDataChange}) {
         ;
     };
   return (
-    <div className="general-info">
+    <>
       <h3>General Information</h3>
         {isEditing ? (
         <form>
@@ -42,19 +42,19 @@ export default function GeneralInfo({data, isEditing, onDataChange}) {
         </form>
         ) : (
             <div>
-                <p>Name: {data.name}</p>
-                <p>Email Address: {data.email}</p>
-                <p>Phone Number: {data.phoneNumber}</p>
+                <p><strong>Name:</strong> {data.name}</p>
+                <p><strong>Email Address:</strong> {data.email}</p>
+                <p><strong>Phone Number:</strong> {data.phoneNumber}</p>
             </div>
             )}
-      <hr />
+      
       <button onClick={() => onDataChange({ name: '', email: '', phoneNumber: '' })}>
                 Reset   
             </button>
         
         
 
-    </div>
+    </>
     
   );
 }

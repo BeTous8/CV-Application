@@ -14,7 +14,7 @@ export default function EducationalExperience ({data, isEditing, onDataChange}) 
 
 
     return (
-        <div>
+        <>
             <h3>Educational Experience</h3>
             {isEditing ? 
             <form>
@@ -42,15 +42,15 @@ export default function EducationalExperience ({data, isEditing, onDataChange}) 
             </form>
             : 
             <div>
-                <p>school name: {data.schoolName}</p>
-                <p>title of study: {data.studyTitle}</p>
-                <p>date of study: {data.date}</p>
+                <p><strong>school name:</strong> {data.schoolName}</p>
+                <p><strong>title of study:</strong> {data.studyTitle}</p>
+                <p><strong>date of study:</strong> {data.date}</p>
             </div>
             }
             
             <button onClick={() => onDataChange({ name: '', email: '', phoneNumber: '' })}>
                 Reset
             </button>
-        </div>
+        </>
     )
 }

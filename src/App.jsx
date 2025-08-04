@@ -22,29 +22,50 @@ function App() {
 
   return (
     
-    <>
-      <h2>{isEditingCV ? "Edit Your CV" : cvData.general.name + "'s " +"CV"}</h2>
-      <GeneralInfo 
+    <div className='app'>
+      <div className='cv-container'>
+        <div className="cv-header">
+          <h1 >{isEditingCV ? "Edit Your CV" : cvData.general.name + "'s " +"CV"}</h1>
+        </div>
+      <div className="cv-section">
+        <GeneralInfo 
         data={cvData.general}
         isEditing={isEditingCV}
         onDataChange={(data) => updateSection('general', data)}
       />
-      <br/>
-      <EducationalExperience
+      </div>
+      
+      
+
+      <div className="cv-section">
+        <EducationalExperience
         data={cvData.education}
         isEditing={isEditingCV}
         onDataChange={(data) => updateSection('education', data)}
       />
-      <PracticalExperience
+      </div>
+      
+      
+      <div className="cv-section">
+        <PracticalExperience
         data={cvData.experience}
         isEditing={isEditingCV}
         onDataChange={(data) => updateSection('experience', data)}
       />
+      </div>
+      
+      
 
-      <button onClick={() => setIsEditingCV(!isEditingCV)}>
+      <div className="cv-actions">
+        <button onClick={() => setIsEditingCV(!isEditingCV)}>
         {isEditingCV ? 'Save CV' : 'Edit CV'}
       </button>
-    </>
+    </div>
+      </div>
+      
+
+    </div>
+    
   )
 }
 
